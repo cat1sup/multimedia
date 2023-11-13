@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize the map
-    var map = L.map('map').setView([44.4268, 26.1025], 12);
+    let map = L.map('map').setView([44.4268, 26.1025], 12);
 
     // Add a tile layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Handle form submission
     document.getElementById('getRoutesBtn').addEventListener('click', function () {
-        var origin = document.getElementById('origin').value;
-        var destination = document.getElementById('destination').value;
+        let origin = document.getElementById('origin').value;
+        let destination = document.getElementById('destination').value;
 
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
-                var userLocation = [position.coords.latitude, position.coords.longitude];
+                let userLocation = [position.coords.latitude, position.coords.longitude];
                 L.marker(userLocation).addTo(map).bindPopup('Your Location').openPopup();
             });
         } else {
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    var scheduleData = [
+    let scheduleData = [
         { time: '08:00 AM', route: 'Bus 101', stop: 'Piata Romana' },
         { time: '08:30 AM', route: 'Bus 102', stop: 'Pipera' },
         { time: '09:00 AM', route: 'Bus 103', stop: 'Berceni' },
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { time: '11:30 AM', route: 'Bus 108', stop: 'Costin Georgian' },
     ];
 
-    var scheduleHtml = '<ul>';
+    let scheduleHtml = '<ul>';
     scheduleData.forEach(function (item) {
         scheduleHtml += `<li>${item.time} - ${item.route} - Stop: ${item.stop}</li>`;
     });
