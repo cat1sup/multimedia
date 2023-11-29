@@ -7,25 +7,49 @@ document.addEventListener('DOMContentLoaded', function () {
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
 
+    // Function to display the user's location marker
+    function showUserLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                let userLocation = [position.coords.latitude, position.coords.longitude];
+                L.marker(userLocation).addTo(map).bindPopup('Your Location').openPopup();
+                map.setView(userLocation, 12); // Set the view to the user's location
+            });
+        } else {
+            alert('Geolocation is not supported by your browser');
+        }
+    }
+
+    // Function to display the destination marker
+    function showDestination(destination) {
+        L.marker([44.4268, 26.1025]).addTo(map).bindPopup('Destination: ' + destination).openPopup();
+    }
+
     // Handle form submission
     document.getElementById('getRoutesBtn').addEventListener('click', function () {
         let origin = document.getElementById('origin').value;
         let destination = document.getElementById('destination').value;
 
+        // Check if both origin and destination are provided
+        if (origin && destination) {
+            // Display user's location marker
+            showUserLocation();
 
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                let userLocation = [position.coords.latitude, position.coords.longitude];
-                L.marker(userLocation).addTo(map).bindPopup('Your Location').openPopup();
-            });
+            // Display destination marker
+            showDestination(destination);
+
+            // Add your logic to calculate and display the route here
         } else {
-            alert('Geolocation is not supported by your browser');
+            alert('Please enter both starting location and destination.');
         }
-
-        L.marker([44.4268, 26.1025]).addTo(map).bindPopup('Destination: ' + destination).openPopup();
     });
 
+    // Handle "Find My Location" button
+    document.getElementById('findLocationBtn').addEventListener('click', function () {
+        showUserLocation();
+    });
 
+    // Display the schedule
     let scheduleData = [
         { time: '08:00 AM', route: 'Bus 101', stop: 'Piata Romana' },
         { time: '08:30 AM', route: 'Bus 102', stop: 'Pipera' },
@@ -43,5 +67,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     scheduleHtml += '</ul>';
     document.getElementById('schedule').innerHTML = scheduleHtml;
-
 });

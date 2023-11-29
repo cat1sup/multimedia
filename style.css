@@ -1,9 +1,9 @@
 body{
-    background-color: 	rgb(150, 192, 183);
+    background-color: 	rgb(83,104,120);
 }
 
 .textLabels{
-    color: rgb(35, 32, 32);
+    color: rgb(244,240,236);
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: medium;
     font-weight: 300;
@@ -15,10 +15,7 @@ body{
     color: whitesmoke;
 }
 
-.getRoutes:hover{
-    background-color: rgb(127, 129, 135);
-    border: rgb(254, 246, 201);
-}
+
 
 #map {
     height: 400px;
