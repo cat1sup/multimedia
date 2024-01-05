@@ -1,26 +1,21 @@
-
-body{
-    margin:0;
-    padding:0;
-    background: rgb(2,0,36);
-    background: linear-gradient(164deg, rgba(2,0,36,1) 0%, rgba(9,9,121,0.9206057422969187) 33%, rgba(0,212,255,1) 100%);
+body {
+    margin: 0;
+    padding: 0;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(164deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 0.9206057422969187) 33%, rgba(0, 212, 255, 1) 100%);
     height: auto;
     width: auto;
     min-height: 100vh;
-    
 }
 
-
-
-
-.textLabels{
-    color: rgb(244,240,236);
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.textLabels {
+    color: rgb(244, 240, 236);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: medium;
     font-weight: 300;
 }
 
-.getRoutes{
+.getRoutes {
     background-color: rgb(22, 28, 44);
     border-color: rgb(135, 142, 136);
     color: whitesmoke;

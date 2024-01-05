@@ -3,10 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let map = L.map('map').setView([44.4268, 26.1025], 12);
 
     // Add a tile layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {       
-    }).addTo(map);
-
-
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
 
     startFunCanvasClock();
     function startFunCanvasClock() {
@@ -19,10 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
             let minutes = now.getMinutes();
             let seconds = now.getSeconds();
 
-            // Clear canvas
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Draw clock face
             ctx.beginPath();
             ctx.arc(canvas.width / 2, canvas.height / 2, canvas.height / 2 - 10, 0, 2 * Math.PI);
             ctx.fillStyle = 'white';
@@ -32,9 +27,9 @@ document.addEventListener('DOMContentLoaded', function () {
             ctx.stroke();
             ctx.closePath();
 
-            // Draw hour hand
+            // Hour
             ctx.beginPath();
-            var hourAngle = (hours % 12 + minutes / 60) * 30 * Math.PI / 180;
+            var hourAngle = ((hours + 9) % 12 + minutes / 60) * 30 * Math.PI / 180;
             var hourLength = canvas.height / 2 - 40;
             ctx.moveTo(canvas.width / 2, canvas.height / 2);
             ctx.lineTo(canvas.width / 2 + hourLength * Math.cos(hourAngle), canvas.height / 2 + hourLength * Math.sin(hourAngle));
@@ -43,9 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
             ctx.stroke();
             ctx.closePath();
 
-            // Draw minute hand
+            // Minute
             ctx.beginPath();
-            var minuteAngle = minutes * 6 * Math.PI / 180;
+            var minuteAngle = (minutes + 45) * 6 * Math.PI / 180;
             var minuteLength = canvas.height / 2 - 20;
             ctx.moveTo(canvas.width / 2, canvas.height / 2);
             ctx.lineTo(canvas.width / 2 + minuteLength * Math.cos(minuteAngle), canvas.height / 2 + minuteLength * Math.sin(minuteAngle));
@@ -54,9 +49,9 @@ document.addEventListener('DOMContentLoaded', function () {
             ctx.stroke();
             ctx.closePath();
 
-            // Draw second hand
+            // Seconds
             ctx.beginPath();
-            var secondAngle = seconds * 6 * Math.PI / 180;
+            var secondAngle = (seconds + 45) * 6 * Math.PI / 180;
             var secondLength = canvas.height / 2 - 10;
             ctx.moveTo(canvas.width / 2, canvas.height / 2);
             ctx.lineTo(canvas.width / 2 + secondLength * Math.cos(secondAngle), canvas.height / 2 + secondLength * Math.sin(secondAngle));
@@ -71,9 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
         drawClock();
     }
 
-
-
-    // Function to display the user's location marker
     function showUserLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
@@ -97,10 +89,10 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         scheduleHtml += '</ul>';
         document.getElementById('schedule').innerHTML = scheduleHtml;
-    
+
         L.marker(startLocation).addTo(map).bindPopup(`Bus ${busNumber} start point`).openPopup();
         map.setView(startLocation, 12);
-    
+
         L.marker(lastStopLocation).addTo(map).bindPopup(`Bus ${busNumber} last stop`).openPopup();
         map.setView(lastStopLocation, 12);
     }
@@ -112,24 +104,19 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('bus2').addEventListener('click', function () {
         handleBusClick('102', scheduleData2, [44.435029, 26.070954], [44.417085, 26.107490]);
     });
-    
-    // Bus 3
+
     document.getElementById('bus3').addEventListener('click', function () {
         handleBusClick('103', scheduleData3, [44.427082, 26.065338], [44.403549, 26.169523]);
     });
-    
-    // Bus 4
+
     document.getElementById('bus4').addEventListener('click', function () {
         handleBusClick('104', scheduleData4, [44.455056, 26.138802], [44.408797, 26.057324]);
     });
-    
-    // Bus 5
+
     document.getElementById('bus5').addEventListener('click', function () {
         handleBusClick('105', scheduleData5, [44.397027, 26.148597], [44.480317, 26.056878]);
     });
 
-
-    // Display the schedule
     let scheduleData1 = [
         { time: '08:00 AM', route: 'Bus 101', stop: 'Piata Romana' },
         { time: '08:30 AM', route: 'Bus 101', stop: 'Pipera' },
@@ -184,8 +171,4 @@ document.addEventListener('DOMContentLoaded', function () {
         { time: '11:00 AM', route: 'Bus 105', stop: 'Kagurazaka' },
         { time: '11:30 AM', route: 'Bus 105', stop: 'Kichijoji' },
     ];
-
-
-
-   
 });

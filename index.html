@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,58 +9,54 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
     <div class="container mt-5 textLabels">
         <h1 class="mb-4">Public Transport Tool</h1>
-        
         <div class="row">
             <div class="col-md-5">
-
-                        <label for="dropdownMenuButton">Select your bus:</label>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Bus number
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" id="bus1" href="#">Bus 101</a>
-                              <a class="dropdown-item" id="bus2" href="#">Bus 102</a>
-                              <a class="dropdown-item" id="bus3" href="#">Bus 103</a>
-                              <a class="dropdown-item" id="bus4" href="#">Bus 104</a>
-                              <a class="dropdown-item" id="bus5" href="#">Bus 105</a>
-                            </div>
-                          </div>
-
-                    
+                <label for="dropdownMenuButton">Select your bus:</label>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Bus number
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" id="bus1" href="#">Bus 101</a>
+                        <a class="dropdown-item" id="bus2" href="#">Bus 102</a>
+                        <a class="dropdown-item" id="bus3" href="#">Bus 103</a>
+                        <a class="dropdown-item" id="bus4" href="#">Bus 104</a>
+                        <a class="dropdown-item" id="bus5" href="#">Bus 105</a>
+                    </div>
+                </div>
                 <p class="mt-3">Want to check your approximate current location?</p>
                 <div class="mt-2">
-                    <button type="button" class="btn btn-primary getRoutes" id="findLocationBtn">Find My Location</button>
+                    <button type="button" class="btn btn-primary getRoutes" id="findLocationBtn">Find
+                        MyLocation</button>
                 </div>
                 <p class="mt-3">Get the schedule and routes for another bus:</p>
                 <div class="mt-2">
-                <button type="button" class="btn btn-primary getRoutes" id="refresh" onClick="window.location.reload(true)">Refresh</button>
+                    <button type="button" class="btn btn-primary getRoutes" id="refresh"
+                        onClick="window.location.reload(true)">Refresh</button>
                 </div>
                 <div class="mt-2">
                     <canvas id="funCanvas"></canvas>
                 </div>
                 <div class="mt-5">
-                <h2>Public Transport Schedule</h2>
-            <div id="schedule" class="mt-2"></div>
-        </div>
+                    <h2>Public Transport Schedule</h2>
+                    <div id="schedule" class="mt-2"></div>
+                </div>
             </div>
-
-            
             <div class="col-md-7">
                 <div id="map"></div>
-                
             </div>
         </div>
-
     </div>
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
